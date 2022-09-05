@@ -205,8 +205,10 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         try {
             //salvar info dos campos nesse projeto criado e depois enviar tudo ao db
             Task task = new Task();
+
             //colocando as info das tarefas no id pertencente ao projeto
             task.setIdProject(project.getId());
+
             //pegar texto dentro do componente
             task.setName(jTextFieldName.getText());
             //pegar texto dentro do componente
@@ -214,6 +216,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
             //pegar texto dentro do componente
             task.setNotes(jTextAreaNotes.getText());
             task.setIsCompleted(false);
+            
             //convertendo a data e guardando
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/y");
             Date deadline = null;
@@ -221,6 +224,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
             task.setDeadline(deadline);
 
             controller.save(task);
+
             JOptionPane.showMessageDialog(rootPane, "Tarefa salva com sucesso!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());

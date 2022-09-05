@@ -4,8 +4,15 @@
  */
 package view;
 
+import controller.ProjectController;
+import controller.TaskController;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import model.Project;
 
 /**
  *
@@ -13,12 +20,21 @@ import java.awt.Font;
  */
 public class MainScreen extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainScreen
-     */
+    //servira p/ trazer as info do db para a tela
+    ProjectController projectController;
+    TaskController taskController;
+
+    //criação de model da list
+    DefaultListModel projectModel;
+
+    //metodo construtor da MainScreen
     public MainScreen() {
         initComponents();
+
         decorateTableTasks();
+
+        initDataController();
+        initComponentsModel();
     }
 
     /**
@@ -143,7 +159,7 @@ public class MainScreen extends javax.swing.JFrame {
             .addGroup(jPanelProjectsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelProjectsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelProjectsAdd)
                 .addContainerGap())
         );
@@ -200,11 +216,6 @@ public class MainScreen extends javax.swing.JFrame {
         jListProjects.setBackground(java.awt.Color.white);
         jListProjects.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jListProjects.setForeground(java.awt.Color.black);
-        jListProjects.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jListProjects.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jListProjects.setFixedCellHeight(50);
         jListProjects.setSelectionBackground(new java.awt.Color(0, 102, 51));
@@ -319,16 +330,24 @@ public class MainScreen extends javax.swing.JFrame {
         ProjectDialogScreen projectDialogScreen = new ProjectDialogScreen(this,
                 rootPaneCheckingEnabled);
         projectDialogScreen.setVisible(true);
+
+        //pega o projeto e mostra na tela qnd a janela é fechada...
+        //(projectDialogScreen) assim mostrando o novo projeto na lista
+        projectDialogScreen.addWindowListener(new WindowAdapter() {
+            public void windowClosed(WindowEvent e) {
+                loadProjects();
+            }
+        });
     }//GEN-LAST:event_jLabelProjectsAddMouseClicked
 
     private void jLabelTasksAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTasksAddMouseClicked
         // TODO add your handling code here:
-        
+
         //criando a tela da tarefa
-        TaskDialogScreen taskDialogScreen = new TaskDialogScreen(this, 
+        TaskDialogScreen taskDialogScreen = new TaskDialogScreen(this,
                 rootPaneCheckingEnabled);
-        //colocar as info da terfa nesse projeto
-        taskDialogScreen.setProject(null);
+        //colocar as info da tarefa nesse projeto
+        //taskDialogScreen.setProject(null);
         //mostrar a tela
         taskDialogScreen.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jLabelTasksAddMouseClicked
@@ -391,7 +410,7 @@ public class MainScreen extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     // modificando cores e fontes do "header" e criando ordenador automatico
-    public void decorateTableTasks(){
+    public void decorateTableTasks() {
         jTableTasks.getTableHeader().setFont(new Font("Ubuntu", Font.BOLD, 14));
         jTableTasks.getTableHeader().setBackground(new Color(0, 102, 51));
         jTableTasks.getTableHeader().setForeground(new Color(255, 255, 255));
@@ -399,4 +418,30 @@ public class MainScreen extends javax.swing.JFrame {
         jTableTasks.setAutoCreateRowSorter(true);
     }
 
+    public void initDataController() {
+        //instanciando
+        projectController = new ProjectController();
+        taskController = new TaskController();
+    }
+
+    //instanciando o projectModel para jList e o grid (modelo da lista, parte
+    //visual)
+    public void initComponentsModel() {
+        projectModel = new DefaultListModel();
+        //carregar os projetos e colocar aqui dentro do projectModel
+        loadProjects();
+    }
+
+    //carregar os projetos
+    public void loadProjects() {
+        List<Project> projects = projectController.getAll();
+        //sera usado mais de uma vez entao é necessario limpar os dados
+        projectModel.clear();
+
+        for (int i = 0; i < projects.size(); i++) {
+            Project project = projects.get(i);
+            projectModel.addElement(project);
+        }
+        jListProjects.setModel(projectModel);
+    }
 }

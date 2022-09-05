@@ -74,9 +74,7 @@ public class Project {
     // classe que representa o projeto
     @Override
     public String toString() {
-        return "Project{" + "id=" + id + ", name=" + name + ", description="
-                + description + ", createdAt=" + createdAt + ", updatedAt="
-                + updatedAt + '}';
+        // mudado para trazer somente o nome do projeto
+        return this.name;
     }
-
 }

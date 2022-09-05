@@ -164,12 +164,14 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
         try {
             //salvar info dos campos nesse projeto criado e depois enviar tudo ao db
             Project project = new Project();
+            
             //pegar texto dentro do componente
             project.setName(jTextFieldName.getText());
             //pegar texto dentro do componente
             project.setDescription(jTextAreaDescription.getText());
 
             controller.save(project);
+            
             JOptionPane.showMessageDialog(rootPane, "Projeto salvo com sucesso!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());

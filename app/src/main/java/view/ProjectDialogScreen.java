@@ -46,12 +46,16 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanelToolBar.setBackground(new java.awt.Color(0, 102, 51));
+        jPanelToolBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabelToolBarTitle.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        jLabelToolBarTitle.setText("Projeto");
+        jLabelToolBarTitle.setFont(new java.awt.Font("Ubuntu Condensed", 1, 24)); // NOI18N
+        jLabelToolBarTitle.setForeground(java.awt.Color.black);
+        jLabelToolBarTitle.setText("  Projeto");
 
+        jLabelToolBarSave.setBackground(new java.awt.Color(106, 149, 157));
         jLabelToolBarSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelToolBarSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/check.png"))); // NOI18N
+        jLabelToolBarSave.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabelToolBarSave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelToolBarSaveMouseClicked(evt);
@@ -64,21 +68,25 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
             jPanelToolBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelToolBarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelToolBarTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelToolBarTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelToolBarSave, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                .addComponent(jLabelToolBarSave, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanelToolBarLayout.setVerticalGroup(
             jPanelToolBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelToolBarSave, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
             .addComponent(jLabelToolBarTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanelToolBarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelToolBarSave, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jPanelProject.setBackground(new java.awt.Color(204, 204, 204));
+        jPanelProject.setBackground(new java.awt.Color(37, 94, 105));
         jPanelProject.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabelName.setFont(new java.awt.Font("Liberation Sans", 1, 14)); // NOI18N
+        jLabelName.setBackground(new java.awt.Color(37, 94, 105));
+        jLabelName.setFont(new java.awt.Font("Ubuntu Condensed", 1, 18)); // NOI18N
         jLabelName.setForeground(java.awt.Color.black);
         jLabelName.setText("Nome");
 
@@ -92,13 +100,13 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
             }
         });
 
-        jLabelDescription.setFont(new java.awt.Font("Liberation Sans", 1, 14)); // NOI18N
+        jLabelDescription.setFont(new java.awt.Font("Ubuntu Condensed", 1, 18)); // NOI18N
         jLabelDescription.setForeground(java.awt.Color.black);
         jLabelDescription.setText("Descrição");
 
         jTextAreaDescription.setBackground(java.awt.Color.white);
         jTextAreaDescription.setColumns(20);
-        jTextAreaDescription.setFont(new java.awt.Font("Liberation Sans", 0, 14)); // NOI18N
+        jTextAreaDescription.setFont(new java.awt.Font("Liberation Sans", 1, 14)); // NOI18N
         jTextAreaDescription.setForeground(java.awt.Color.black);
         jTextAreaDescription.setRows(5);
         jTextAreaDescription.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -111,7 +119,7 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProjectLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelProjectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
                     .addComponent(jLabelName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextFieldName, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelDescription, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -124,10 +132,10 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
                 .addComponent(jLabelName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabelDescription)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                .addComponent(jLabelDescription)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -135,15 +143,17 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelProject, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelProject, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanelToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelProject, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

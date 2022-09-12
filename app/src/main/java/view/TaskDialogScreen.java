@@ -56,12 +56,16 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPaneloolBar.setBackground(new java.awt.Color(0, 102, 51));
+        jPaneloolBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabelToolBarTitle.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        jLabelToolBarTitle.setText("Tarefa");
+        jLabelToolBarTitle.setFont(new java.awt.Font("Ubuntu Condensed", 1, 24)); // NOI18N
+        jLabelToolBarTitle.setForeground(java.awt.Color.black);
+        jLabelToolBarTitle.setText("  Tarefa");
 
+        jLabelToolBarSave.setBackground(new java.awt.Color(106, 149, 157));
         jLabelToolBarSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelToolBarSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/check.png"))); // NOI18N
+        jLabelToolBarSave.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabelToolBarSave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelToolBarSaveMouseClicked(evt);
@@ -75,23 +79,28 @@ public class TaskDialogScreen extends javax.swing.JDialog {
             .addGroup(jPaneloolBarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelToolBarTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelToolBarSave, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPaneloolBarLayout.setVerticalGroup(
             jPaneloolBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelToolBarSave, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
             .addComponent(jLabelToolBarTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPaneloolBarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelToolBarSave, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jPanelTask.setBackground(new java.awt.Color(204, 204, 204));
+        jPanelTask.setBackground(new java.awt.Color(37, 94, 105));
+        jPanelTask.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabelName.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabelName.setFont(new java.awt.Font("Ubuntu Condensed", 1, 18)); // NOI18N
         jLabelName.setForeground(java.awt.Color.black);
         jLabelName.setText("Nome");
 
         jTextFieldName.setBackground(java.awt.Color.white);
+        jTextFieldName.setFont(new java.awt.Font("Liberation Sans", 1, 14)); // NOI18N
         jTextFieldName.setForeground(java.awt.Color.black);
         jTextFieldName.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTextFieldName.addActionListener(new java.awt.event.ActionListener() {
@@ -100,28 +109,31 @@ public class TaskDialogScreen extends javax.swing.JDialog {
             }
         });
 
-        jLabelDescription.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabelDescription.setFont(new java.awt.Font("Ubuntu Condensed", 1, 18)); // NOI18N
         jLabelDescription.setForeground(java.awt.Color.black);
         jLabelDescription.setText("Descrição");
 
-        jLabelDeadline.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabelDeadline.setFont(new java.awt.Font("Ubuntu Condensed", 1, 18)); // NOI18N
         jLabelDeadline.setForeground(java.awt.Color.black);
-        jLabelDeadline.setText("Prazo");
+        jLabelDeadline.setText("Prazo (dd/mm/yyyy)");
 
-        jLabelNotes.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabelNotes.setFont(new java.awt.Font("Ubuntu Condensed", 1, 18)); // NOI18N
         jLabelNotes.setForeground(java.awt.Color.black);
         jLabelNotes.setText("Notas");
 
         jTextAreaDescription.setBackground(java.awt.Color.white);
         jTextAreaDescription.setColumns(20);
+        jTextAreaDescription.setFont(new java.awt.Font("Liberation Sans", 1, 14)); // NOI18N
         jTextAreaDescription.setForeground(java.awt.Color.black);
         jTextAreaDescription.setRows(5);
         jTextAreaDescription.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTextAreaDescription.setPreferredSize(new java.awt.Dimension(244, 90));
         jScrollPaneDescription.setViewportView(jTextAreaDescription);
         jTextAreaDescription.getAccessibleContext().setAccessibleName("");
 
         jTextAreaNotes.setBackground(java.awt.Color.white);
         jTextAreaNotes.setColumns(20);
+        jTextAreaNotes.setFont(new java.awt.Font("Liberation Sans", 1, 14)); // NOI18N
         jTextAreaNotes.setForeground(java.awt.Color.black);
         jTextAreaNotes.setRows(5);
         jTextAreaNotes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -139,7 +151,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
             .addGroup(jPanelTaskLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelTaskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneNotes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+                    .addComponent(jScrollPaneNotes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
                     .addComponent(jScrollPaneDescription, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextFieldName)
@@ -152,22 +164,22 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         jPanelTaskLayout.setVerticalGroup(
             jPanelTaskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTaskLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap()
                 .addComponent(jLabelName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelDescription)
-                .addGap(2, 2, 2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPaneDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelDeadline)
-                .addGap(4, 4, 4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jFormattedTextFieldDeadline, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelNotes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneNotes, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                .addComponent(jScrollPaneNotes, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

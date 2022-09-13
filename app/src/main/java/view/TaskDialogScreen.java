@@ -215,33 +215,44 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         // TODO add your handling code here:
 
         try {
-            //salvar info dos campos nesse projeto criado e depois enviar tudo ao db
-            Task task = new Task();
 
-            //colocando as info das tarefas no id pertencente ao projeto
-            task.setIdProject(project.getId());
+            //validando as informações
+            if (!jTextFieldName.getText().isEmpty() && !jFormattedTextFieldDeadline.
+                    getText().isEmpty()) {
 
-            //pegar texto dentro do componente
-            task.setName(jTextFieldName.getText());
-            //pegar texto dentro do componente
-            task.setDescription(jTextAreaDescription.getText());
-            //pegar texto dentro do componente
-            task.setNotes(jTextAreaNotes.getText());
-            task.setIsCompleted(false);
-            
-            //convertendo a data e guardando
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/y");
-            Date deadline = null;
-            deadline = dateFormat.parse(jFormattedTextFieldDeadline.getText());
-            task.setDeadline(deadline);
+                //salvar info dos campos nesse projeto criado e depois enviar tudo ao db
+                Task task = new Task();
 
-            controller.save(task);
+                //colocando as info das tarefas no id pertencente ao projeto
+                task.setIdProject(project.getId());
 
-            JOptionPane.showMessageDialog(rootPane, "Tarefa salva com sucesso!");
+                //pegar texto dentro do componente
+                task.setName(jTextFieldName.getText());
+                //pegar texto dentro do componente
+                task.setDescription(jTextAreaDescription.getText());
+                //pegar texto dentro do componente
+                task.setNotes(jTextAreaNotes.getText());
+                task.setIsCompleted(false);
+
+                //convertendo a data e guardando
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/y");
+                Date deadline = null;
+                deadline = dateFormat.parse(jFormattedTextFieldDeadline.getText());
+                task.setDeadline(deadline);
+
+                controller.save(task);
+
+                JOptionPane.showMessageDialog(rootPane, "Tarefa salva com sucesso!");
+                this.dispose();
+
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "A Tarefa não foi salva, "
+                        + "pois os campos não foram preenchidos");
+            }
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
-        this.dispose();
     }//GEN-LAST:event_jLabelToolBarSaveMouseClicked
 
     /**
